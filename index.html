@@ -27,240 +27,239 @@
 <body>
      <a href="https://github.com/opengeolabs/shapefilemustdie"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
     <div class="container">
-    <h1>Switch from Shapefile</h1>
+    <h1>Cambiar desde Shapefile</h1>
     <img class="format-logo img-thumbnail" src="images/ban-shapefile.png" />
     <p class="lead">
     <a href="https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI
-            Shapefile</a> is <a
-            href="https://en.wikipedia.org/wiki/Shapefile">old file format for
-            storing geospatial vector data</a>. It has been around since early
-    1990s. It is still used as most common exchange vector data format.
+            Shapefile</a> es <a
+            href="https://en.wikipedia.org/wiki/Shapefile"> es un formato de archivo antiguo para almacenar datos vectoriales geoespaciales</a>.
+            Ha existido desde principios de los años noventa. Se sigue utilizando como el formato de datos vectoriales de intercambio más común.
     </p>
-    <p>The geospatial IT industry made a huge step since then, yet the Shapefile
-    is still most common file format for sharing vector data.
-    </p>
-    <p>
-    Shapefile was great format in it's time and the fact, it's still used
-    today, proofs, that it's design was truly eternal.
+    <p>La industria de TI geoespacial ha dado un gran paso desde entonces,
+    pero Shapefile sigue siendo el formato de archivo más común para compartir datos vectoriales.
     </p>
     <p>
-    Yet we believe, the time of the Shapefile has passed and we, the Geospatial
-    IT Industry shall replace it with more modern concepts. Shapefile is now
-    outdated format and should be abandoned in the future for sharing of
-    geospatial vector data.
+    Shapefile fue un gran formato en su momento y el hecho de que aún se utiliza hoy en día,
+    prueba que su diseño fue verdaderamente eterno.
     </p>
-    <p><strong>Read more:</strong></p>
+    <p>
+      Sin embargo, creemos que el tiempo del Shapefile ha pasado y nosotros, la industria de TI geoespacial,
+      lo reemplazará con conceptos más modernos. Shapefile es ahora un formato anticuado y debería abandonarse
+      en el futuro para compartir datos de vectores geoespaciales.
+    </p>
+    <p><strong>Leer más:</strong></p>
     <ul>
-            <li><a href="#thegoodside">The good side</a></li>
-            <li><a href="#shapefileisbad">Shapefile is bad format</a></li>
-            <li><a href="#alternatives">Shapefile alternatives</a></li>
+            <li><a href="#thegoodside">El lado bueno</a></li>
+            <li><a href="#shapefileisbad">Shapefile es de mal formato</a></li>
+            <li><a href="#alternatives">Formato de archivo alternativos a SHP</a></li>
     </ul>
 
     <hr>
     <a name="thegoodside"></a>
-    <h2>The good side</h2>
+    <h2>El lado bueno</h2>
     <p>
-        Not all Shapefile features do make it bad (or unmodern) format. There is
-        a couple of features, why Shapefile is still beating most of other
-        formats:
+        No todas las características de Shapefile lo hacen un formato malo (o no moderno).
+        Hay un par de características, por las que Shapefile sigue ganando a la mayoría
+        de los otros formatos:
     </p>
     <ul>
-        <li>It's open format. Even proprietary, the specification is open and
-                implemented wildly.</li>
-        <li>Shapefile is by far mostly supported format. If every other format
-                fails, Shapefile is always supported</li>
-        <li>For most of the usecases, it appears to be <em>good
-                        enough</em>.</li>
-        <li>It appears to be relatively efficient - the resulting file, even
-                un-ziped - is relatively small, compared to some other, mostly
-                text-based formats.
+        <li>Es formato abierto. Incluso propietario, la especificación es abierta y
+                implementado ampliamente.</li>
+        <li>Shapefile es por mucho, la mayoría de los formatos soportados. Si cualquier otro formato
+                falla, Shapefile siempre es compatible</li>
+        <li>Para la mayoría de los casos, parece ser suficientemente <em>
+               bueno</em>.</li>
+        <li>Parece ser relativamente eficiente - el archivo resultante, incluso
+                sin comprimir - es relativamente pequeño, comparada con otros formatos
+                principalmente basados en texto.
         </li>
     </ul>
 
     <div class="alert alert-danger" role="alert">
     <a name="shapefileisbad"></a>
-    <h2 class="alert-heading">Shapefile is bad format</h2>
-    <p>Why is Shapefile so bad? Here are several reasons, why the Shapefile is
-    bad format and you should avoid it's usage:</p>
+    <h2 class="alert-heading">Shapefile es un mal formato</h2>
+    <p>¿Por qué Shapefile es tan malo? Aquí hay varias razones por las que Shapefile es un mal formato
+        y debería evitar su uso:</p>
     <ul>
-        <li><a href="#multifile">It's multifile format</a>. You can not
-                    share just one file, you always need to send at least 3, or zip them together</li>
-        <li><a href="#10characters">Attribute names are limited to 10
-                        characters</a>. If you need longer attribute names, you
-                are lost.</li>
-        <li><a href="#255attributes">Only 255 attributes</a>. The DBF file does
-                not allow to store more then 255 attribute fields.</li>
-        <li><a href="#datatypes">Limitted data types</a>. Data types are limited
-                to float, integer, date and text with maximum 254
-                characters.</li>
-        <li><a href="#characterset">Unknown character set</a>. There is no way
-                how to specify character set used in the database.</li>
-        <li><a href="#sizelimit">It's limited to 2GB of file size</a>. Even some
-                tools are able to overpass this limit, they can never exceed 4GB
-                of data.</li>
-        <li><a href="#simplefeature">No topology in the data</a>. There is no
-                way, how to describe topological relations in the format.</li>
-        <li><a href="#mixedgeometry">Single geometry type per file</a>. There is
-                no way, how to save mixed geometry features.</li>
-        <li><a href="#hierarchy">More complicated data structures are impossible
-                        to save</a>. It's "flat table" format.</li>
-        <li><a href="#addmore">Add
-                        more</a> ...</li>
+        <li><a href="#multifile">Es formato multiarchivo</a>.  No puedes compartir un solo archivo,
+        siempre tienes que enviar al menos 3 o comprimirlos juntos.</li>
+        <li><a href="#10characters">Los nombres de los atributos están limitados a 10
+                caracteres</a>. Si necesita nombres de atributo más largos,
+                se pierde.</li>
+        <li><a href="#255attributes">Sólo 255 atributos</a>. El archivo DBF no
+        permite almacenar más de 255 campos de atributos.</li>
+        <li><a href="#datatypes">Tipos de datos limitados</a>. Los tipos de datos están limitados
+        a flotación, enteros, fecha y texto con un máximo de
+        254 caracteres.</li>
+        <li><a href="#characterset">Juego de caracteres desconocido</a>. No hay forma de especificar
+        el juego de caracteres utilizado en la base de datos.</li>
+        <li><a href="#sizelimit">Limitado a 2GB de tamaño de archivo</a>. Incluso si algunas herramientas
+        son capaces de sobrepasar este límite, pero nunca
+        pueden exceder los 4GB de datos.</li>
+        <li><a href="#simplefeature">Sin topología en los datos</a>. No hay manera de
+        describir las relaciones topológicas en el formato.</li>
+        <li><a href="#mixedgeometry">Tipo de geometría única por archivo</a>. No hay manera,
+        cómo guardar entidades de geometría mixta.</li>
+        <li><a href="#hierarchy">Las estructuras de datos más complejas
+        son imposibles de guardar</a>. Es formato de "tabla plana".</li>
+        <li><a href="#addmore">Añadir más</a> ...</li>
     </ul>
     </div>
-    
+
     <div class="alert alert-secondary" role="alert">
     <a name="#multifile"></a>
-    <h3>Multifile format</h3>
+    <h3>Formato multiarchivo</h3>
     <p>
-    The Shapefile uses <a
-       href="https://en.wikipedia.org/wiki/Shapefile#Overview">at least 3
-       files</a>, but there are up to 10 other file extensions, which can be
-       distributed along with the Shapefile. Nearly every geospatial software
-       package is adding it's own extension to try to overcome some of the
-       limit's Shapefile has.
+    El archivo Shapefile utiliza <a
+       href="https://en.wikipedia.org/wiki/Shapefile#Overview">
+       al menos 3 archivos</a>, pero hay hasta 10 extensiones de archivo adicionales, que se pueden
+       distribuir junto con el archivo Shapefile. Casi todos los paquetes de software geoespacial
+       están agregando su propia extensión para tratar de superar algunos de los
+       límites que tiene el Shapefile.
     </p>
     <p>
-        This is highly unpractical for distribution of the data. User usually
-        has to zip all the files into one archive - and unzip it on the other
-        end of the distribution chain.
+        Esto es muy poco práctico para la distribución de los datos. Por lo general,
+        el usuario tiene que comprimir todos los archivos y
+        descomprimirlo al final de la cadena de distribución.
     </p>
     </div>
 
     <div class="alert" role="alert">
     <a name="#10characters"></a>
-    <h3>10 Characters attribute names</h3>
+    <h3>10 carácteres de Nombres de atributos</h3>
     <p>
-        Attribute names are limited to 10 characters at maximum. Longer names
-        are usually automatically shorten. This is limiting to some application
-        and leads to bad data arrangement.
+       Los nombres de los atributos están limitados a 10
+       caracteres como máximo. Los nombres más largos generalmente
+       se acortan automáticamente. Esto se limita a algunas aplicaciones y conduce a una mala disposición de los datos..
     </p>
     </div>
 
     <div class="alert alert-secondary" role="alert">
     <a name="#255attributes"></a>
-    <h3>255 attribute fields</h3>
+    <h3>255 campos de atributos</h3>
     <p>
-        There can be only 255 attribute fields in the database file. For some
-        application this is limiting especially in combination with the <a
-       href="#hierarchy">flat table structure</a>.
+       Sólo puede haber 255 campos de atributo en el archivo de base de datos.
+       Para algunas aplicaciones esto es especialmente limitante en combinación con la <a
+       href="#hierarchy">estructura de tabla plana.</a>.
     </p>
     </div>
 
     <div class="alert" role="alert">
     <a name="#datatypes"></a>
-    <h3>Poor support for attribute data types</h3>
+    <h3>Soporte pobre para tipos de datos de atributos</h3>
     <p>
-        Float, integer, date and character string data types are supported. But
-        floating point numbers are stored as text, there is no support for big
-        integers (thus the format is not usable, you are having data with big
-        integer identifiers, such as cadastral map) and the text is limited to
-        254 characters only. 
+        Se admiten tipos de datos de cadena de caracteres, tipo flotante,
+        enteros, de fecha y de caracteres. Pero los números de coma flotante
+       se almacenan como texto, no hay soporte para números enteros grandes
+       (por lo que el formato no es utilizable, se tienen datos con
+       identificadores enteros grandes, como cartografía catastral)
+       y el texto está limitado sólo a 254 caracteres.
     </p>
     <p>
-        There is no support for more advanced data fields, blobs etc.
+       No hay soporte para campos de datos más avanzados, blobs, etc.
     </p>
     </div>
 
     <div class="alert alert-secondary" role="alert">
     <a name="characterset"></a>
-    <h3>Unknown character set</h3>
+    <h3>Juego de caracteres desconocido</h3>
     <p>
-        There is now way how to specify character set used in the database. Most
-        of the applications are using the old Windows-* or ISO-* data encodings,
-        but nowadays, we are using UTF-8. Still there is no way how to specify
-        this in file header.
+        Actualmente existe una forma de especificar el juego de caracteres utilizado en la base de datos.
+        La mayoría de las aplicaciones están utilizando las antiguas codificaciones de datos Windows* o ISO-*,
+        pero hoy en día estamos utilizando UTF-8.
+        Todavía no hay forma de especificar esto en la cabecera del fichero..
     </p>
     <p>
-        The support for Unicode characters is also very limited.
+        El soporte para caracteres Unicode también es muy limitado.
     </p>
     </div>
 
 
     <div class="alert" role="alert">
     <a name="#sizelimit"></a>
-    <h3>2GB Size limit</h3>
+    <h3>Tamaño límite de 2GB</h3>
     <p>
-        The size of both .shp and .dbf component files cannot exceed 2 GB. <a
-       href="http://www.gdal.org/drv_shapefile.html">GDAL Shapefile driver</a>
-        overcomes this limit, but 
+        El tamaño de los archivos de componentes. shp y. dbf no puede exceder los 2 GB. <a
+       href="http://www.gdal.org/drv_shapefile.html">El driver GDAL Shapefile </a>
+        supera este límite, pero
     </p>
 
-        <blockquote><p>The Shapefile format explicitly uses 32bit offsets and so cannot go
-        over 8GB (it actually uses 32bit offsets to 16bit words), but the OGR shapefile
-        implementation has a limitation to 4GB.
+        <blockquote><p>El formato Shapefile usa explícitamente offsets de
+        32 bits y por lo tanto no puede superar los 8GB (en realidad utiliza
+        offsets de 32 bits a palabras de 16bit), pero la implementación
+        de shapefile OGR tiene una limitación de 4GB.
                 </p>
                 <p>
-        However, for compatibility with other software implementation, it is not recommended to use a file size over 2GB for both .SHP and .DBF files.
+        Sin embargo, para la compatibilidad con otras implementaciones de software, no se recomienda utilizar un tamaño de archivo superior a 2 GB para los archivos. SHP y. DBF.
                 </p>
         </blockquote>
 
-        <p>So 4GB is all you can have in single Shapefile. This sounds enough,
-        but not for all cases.</p>
+        <p>Así que 4GB es todo lo que puedes tener en un único archivo Shapefile.
+        Esto suena suficiente, pero no para todos los casos.</p>
     </div>
 
     <div class="alert alert-secondary" role="alert">
     <a name="#simplefeature"></a>
-    <h3>Non-topological format</h3>
+    <h3>Formato no topológico</h3>
     <p>
-        Shapefile is simple-feature format. There is no way, how to store more
-        complex geometry relationships.
+        Shapefile es un formato sencillo. No hay manera de almacenar relaciones
+        geométricas más complejas.
     </p>
     </div>
 
     <div class="alert" role="alert">
     <a name="#mixedgeometry"></a>
-    <h3>No mixed geometry</h3>
+    <h3>Sin geometría mixta</h3>
     <p>
-        Each file can be only one of the supported geometry formats (Point,
-        Line, Polygon and others). Mixed geometry features are not possible.
+        Cada archivo puede ser sólo uno de los formatos de geometría soportados
+        (Punto, Línea, Polígono y otros). No es posible la geometría mixta.
     </p>
     </div>
 
     <div class="alert alert-secondary" role="alert">
     <a name="#hierarchy"></a>
-    <h3>Flat data structure</h3>
+    <h3>Estructura de datos plana</h3>
     <p>
-        The data structure is limited to <em>flat</em> tables with no
-        hierarchies, relations or tree structure.
+        La estructura de datos se limita a tablas <em>planas</em> sin jerarquías,
+        relaciones o estructura de árbol.
     </p>
     </div>
 
     <div class="alert" role="alert">
     <a name="#addmore"></a>
-    <h3>Know about another issue? Send us more!</h3>
+    <h3>¿Sabes sobre otro tema? Envíenos más!</h3>
     <p>
-        Do you know about more limits or do you want to extend existing once?
-        Please do so via pull-request or comment in <a
-       href="https://github.com/OpenGeoLabs/shapefilemustdie">the
-       repository</a>.
+        ¿Conoce más límites o quiere ampliar los existentes una vez? Por favor,
+       hágalo a través de solicitud o comentario en <a
+       href="https://github.com/OpenGeoLabs/shapefilemustdie">el
+       repositorio</a>.
     </p>
     </div>
 
     <hr>
     <a name="alternatives"></a>
-    <h2>Alternatives</h2>
+    <h2>Alternativas</h2>
     <img class="format-logo img-thumbnail" src="images/prefer-geopackage.png"/>
     <p>
-    What are the alternatives for the Shapefile? To be honest, no alternative
-    format did take over Shapefiles hegemony yet. Some of the formats nearly
-    took over (KML, GML, GeoJSON), but their usage was limited for relatively
-    narrow use cases only.
+    ¿Cuáles son las alternativas para el archivo Shapefile? Para ser honesto,
+    ningún formato alternativo se apoderó de la hegemonía de Shapefiles.
+    Algunos de los formatos casi asumieron el control (KML, GML, GeoJSON),
+    pero su uso fue limitado sólo para casos de uso relativamente restringido.
     </p>
     <p>
-    Although there are <a href="http://www.gdal.org/ogr_formats.html">more then
-            80 used vector data formats</a> out there, only few can be
-    considered as the candidate for Shapefile replacement.
+    Aunque hay <a href="http://www.gdal.org/ogr_formats.html">más de
+            80 formatos de datos vectoriales usados, sólo unos pocos pueden ser
+    considerados como candidatos para el reemplazo de Shapefile.
     </p>
-    <strong>List of some Shapefile alternatives</strong>
+    <strong>Lista de algunas alternativas de Shapefile</strong>
     <ul>
-            <li><strong><a href="#geopackage">OGC GeoPackage</a></strong></li> 
-            <li><a href="#gml">OGC GML</a></li> 
-            <li><a href="#geodatabase">ESRI GeoDatabase</a></li> 
-            <li><a href="#spatialite">SpatiaLite</a></li> 
-            <li><a href="#csv">CSV</a></li> 
-            <li><a href="#kml">OGC KML</a></li> 
-            <li><a href="#geojson">GeoJSON</a></li> 
+            <li><strong><a href="#geopackage">OGC GeoPackage</a></strong></li>
+            <li><a href="#gml">OGC GML</a></li>
+            <li><a href="#geodatabase">ESRI GeoDatabase</a></li>
+            <li><a href="#spatialite">SpatiaLite</a></li>
+            <li><a href="#csv">CSV</a></li>
+            <li><a href="#kml">OGC KML</a></li>
+            <li><a href="#geojson">GeoJSON</a></li>
     </ul>
 
     <hr>
@@ -271,46 +270,47 @@
             <h3>OGC GeoPackage</h3>
             <img class="format-logo img-thumbnail" src="images/geopkg.png"/>
             <p class="lead">
-            <a href="http://geopackage.org">OGC GeoPackage</a> is one of the most
-            promising formats, designed for today's modern applications. GeoPackage is
-            published as standard by<a href="http://opengeospatial.org/standards/geopackage">Open
+            <a href="http://geopackage.org">OGC GeoPackage</a> es uno de los formatos más prometedores,
+            diseñado para las aplicaciones modernas de hoy en día. GeoPackage es
+            publicado como estándar por<a href="http://opengeospatial.org/standards/geopackage">Open
             Geospatial Consoritum</a>.
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
-                <li>SQLite as backend</li>
-                <li>File based, single file</li>
-                <li>Vectors, rasters</li>
-                <li>Official extensions</li>
-                <li>Supported in many software packages</li>
+                <li>SQLite como motor</li>
+                <li>Basado en un archivo simple</li>
+                <li>Vectores, raster</li>
+                <li>Extensiones oficiales</li>
+                <li>Compatible con muchos paquetes de software</li>
             </ul>
-            <h4>Description</h4>
+            <h4>Descripción</h4>
             <p>
-            GeoPackage is an open, standards-based, platform-independent, portable,
-            self-describing, compact format for transferring geospatial information.
+            GeoPackage es un formato abierto, basado en estándares, independiente de la plataforma, portable,
+            autodescriptivo y compacto para la transferencia de información geoespacial.
             </p>
             <p>
-            The GeoPackage Encoding Standard describes a set of conventions for storing
-            the following within an SQLite database:
+            El Estándar de codificación de GeoPackage describe un conjunto de convenciones para almacenar
+            lo siguiente dentro de una base de datos SQLite:
             </p>
             <ul>
-                <li>vector features</li>
-                <li>tile matrix sets of imagery and raster maps at various scales</li>
-                <li>attributes (non-spatial data)</li>
-                <li>extensions</li>
+                <li>entidades vectoriales</li>
+                <li>conjunto de matrices de teselas de imágenes
+                y mapas ráster en varias escalas</li>
+                <li>atributos (datos no espaciales)</li>
+                <li>extenciones</li>
             </ul>
 
             <p>
-            There are already published <a
-                                       href="http://www.geopackage.org/extensions.html">extensions</a>
-            for GeoPackage, who make this format even more powerful.
+            Ya hay publicadas <a
+                                       href="http://www.geopackage.org/extensions.html">extensiones</a>
+            para GeoPackage, que hacen que este formato sea aún más potente.
             </p>
             <p>
-            GeoPackage is now (2017) <a href="https://twitter.com/pvangenuchten/status/914583535465435138">supported in most of the software packages</a>.
+            GeoPackage es ahora (2017) <a href="https://twitter.com/pvangenuchten/status/914583535465435138">soportado en la mayoría de los paquetes de software</a>.
             </p>
             <p>
-            We believe, what GeoPackage is <strong>the</strong> candidate for Shapefile
-            replacement.
+            Creemos en lo que GeoPackage es <strong>el</strong> ccandidato para el reemplazo
+            de Shapefile.
             </p>
     </div>
 
@@ -321,24 +321,23 @@
             <p class="lead">
             Another <a href="http://opengeoslatial.org/standard/gml">OGC Standard</a>.
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
-                <li>XML Based</li>
-                <li>Only vectors</li>
-                <li>Hierarchies</li>
-                <li>Thanks to INSPIRE, supported in most of software package</li>
+                <li>Basado en XML</li>
+                <li>Sólo vectores</li>
+                <li>Jerarquías</li>
+                <li>Gracias a INSPIRE, soportado en la mayoría de los paquetes de software</li>
             </ul>
-            <h4>Description</h4>
+            <h4>Descripción</h4>
             <p>
-            GML was picked as the main distribution vector data format the European
-            INSPIRE initiative. It's very complex format, but it's usage is hard in
-            daily praxis. One of the issues is, that in order to being able to process
-            the data file, it has to be loaded into computer memory, which makes it very
-            difficult to be used for large vector data sets.
+            GML fue elegido como el formato de datos vectoriales de distribución principal de la iniciativa europea INSPIRE.
+            Es un formato muy complejo, pero su uso es difícil en la práctica diaria. Uno de los problemas es que,
+            para poder procesar el archivo de datos, tiene que ser cargado en la memoria del ordenador,
+            lo que dificulta enormemente su uso en grandes conjuntos de datos vectoriales.
             </p>
             <p>
-            GML is currently often use for open data data sets, since it's technology
-            neutral and supported OGC Standard.
+            Actualmente, GML se utiliza con frecuencia para los conjuntos de datos abiertos,
+            ya que es tecnología neutral y compatible con el estándar OGC.
             </p>
     </div>
 
@@ -347,27 +346,25 @@
             <h3>ESRI GeoDatabase</h3>
 
             <p class="lead">
-            At its most basic level, an <a href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/geodatabases/what-is-a-geodatabase.htm">ArcGIS geodatabase</a> is a collection of geographic
-            datasets of various types held in a common file system folder, a Microsoft
-            Access database, or a multiuser relational DBMS (such as Oracle, Microsoft
-            SQL Server, PostgreSQL, Informix, or IBM DB2).
+            En su nivel más básico, una <a href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/geodatabases/what-is-a-geodatabase.htm">geodatabase ArcGIS</a> es una colección de conjuntos de datos
+           geográficos de varios tipos mantenidos en una carpeta común del sistema de archivos, una base de datos de
+           Microsoft Access o un DBMS relacional multiusuario (como Oracle, Microsoft SQL Server, PostgreSQL, Informix o IBM DB2).
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
-                    <li>native data structure for ArcGIS</li>
-                    <li>file-based (or database based)</li>
-                    <li>complex data models</li>
-                    <li>proprietary, closed format</li>
+                    <li>estructura de datos nativa para ArcGIS</li>
+                    <li>basado en archivos (o en bases de datos)</li>
+                    <li>modelos de datos complejos</li>
+                    <li>proprietario, formato cerrado</li>
             </ul>
-            <h4>Description</h4>
+            <h4>Descripción</h4>
             <p>
-            GeoDatabase is very often used in the ArcGIS environment as the main
-            exchange data format. It's features are very complex and advanced.
+            GeoDatabase se utiliza muy a menudo en el entorno ArcGIS como el principal formato de intercambio de datos.
+            Sus características son muy complejas y avanzadas.
             </p>
             <p>
-            On the other hand, it's proprietary closed format, which is used exclusively
-            in the environment of ESRI products, not implemented in other software
-            packages.
+              Por otra parte, su formato cerrado propietario, que se utiliza exclusivamente
+              en el entorno de los productos ESRI, no implementado en otros paquetes de software.
             </p>
     </div>
 
@@ -377,38 +374,38 @@
             <img class="format-logo img-thumbnail" src="images/spatialite-logo.png"/>
             <p class="lead">
             <a href="https://www.gaia-gis.it/fossil/libspatialite/home">SpatiaLite</a>
-            is popular database, file based data storage.
+            es una base de datos popular, basada en archivos de almacenamiento de datos.
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
-                    <li>File based</li>
-                    <li>SQL database</li>
-                    <li>OGC Simple feature</li>
+                    <li>Basado en archivos</li>
+                    <li>base de datos SQL</li>
+                    <li>Entidades Simple OGC</li>
             </ul>
-            <h4>Description</h4>
+            <h4>Descripción</h4>
             <p>
-                SpatiaLite is an open source library intended to extend the SQLite core
-                to support fully fledged Spatial SQL capabilities.
-                SQLite is intrinsically simple and lightweight:
+                SpatiaLite es una librería de código abierto diseñada para
+                extender el núcleo de SQLite y soportar capacidades SQL
+                espaciales completas. SQLite es intrínsecamente simple y ligero:
             </p>
             <ul>
-                    <li>a single lightweight library implementing the full SQL engine</li>
-                    <li>standard SQL implementation: almost complete SQL-92</li>
-                    <li>a whole database simply corresponds to a single monolithic file
-                            (no size limits)</li>
-                    <li>any DB-file can be safely exchanged across different platforms,
-                            because the internal architecture is universally
-                            portable</li>
+                    <li>una librería ligera que implementa el motor SQL completo</li>
+                    <li>implementación SQL estándar: casi completa SQL-92</li>
+                    <li>una base de datos completa corresponde simplemente a un único archivo monolítico
+                    (sin límite de tamaño)</li>
+                    <li>cualquier archivo DB puede intercambiarse de forma segura a
+                    través de diferentes plataformas, ya que la arquitectura interna
+                    es universalmente portátil.</li>
             </p>
             <p>
-            To us, SpatiaLite seems to be the second best option after the <a
-               href="#geopackage">GeoPackage</a> possibility. They do build on top of
-               the same technology, which is SQLite.
+            Para nosotros, SpatiaLite parece ser la segunda mejor opción después de la posibilidad de <a
+               href="#geopackage">GeoPackage</a>. Estan construídos sobre la misma tecnología,
+               que es SQLite.
             </p>
             <p>
-            Compared to GeoPackage, it lacks support for extensions and support for
-            raster data - that is certainly not a must-have feature, but it's good, if
-            we take this into consideration.
+            Comparado con GeoPackage, carece de soporte para extensiones y soporte para datos raster -
+            eso ciertamente no es una característica imprescindible, pero es bueno,
+            si tenemos esto en cuenta.
             </p>
     </div>
 
@@ -418,23 +415,22 @@
             <h3>CSV</h3>
             <img class="format-logo img-thumbnail" src="images/csv.png"/>
             <p class="lead">
-            Some people tend to use <a href="https://www.ietf.org/rfc/rfc4180.txt">comma
-                    separated files</a> for storing of vector data.
+            Algunas personas tienden a usar <a href="https://www.ietf.org/rfc/rfc4180.txt">archivos
+           separados por comas</a> para almacenar datos vectoriales.
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
                 <li>Simple</li>
             </ul>
 
-            <h4>Description</h4>
+            <h4>Descriptción</h4>
             <p>
-            Among non-GeoSpatial people, the CSV is very popular, but for most of
-            GeoSpatial applications it's unusable format.
+            Las personas que no trabajan con tecnologías geoespaciales, el CSV es muy popular,
+            pero para la mayoría de las aplicaciones geoespaciales es un formato no utilizable.
             </p>
             <p>
-            At least two reasons for not using CSV as Shapefile replacement: It's not
-            standardized (there are many dialects out there), support for non-point
-            geospatial data is complicated.
+            Por lo menos dos razones para no usar CSV como reemplazo de Shapefile: No está estandarizado
+           (hay muchos dialectos), el soporte para datos geoespaciales no puntuales es complejo.
             </p>
     </div>
 
@@ -443,24 +439,24 @@
             <h3>OGC KML</h3>
             <img class="format-logo img-thumbnail" src="images/kml.png"/>
             <p class="lead">
-            Originally provided by Google <a
-               href="http://opengeospatial.org/standards/kml">OGC KML</a> used to be
-               very popular vector data format.
+            Provisto originalmente por Google <a
+               href="http://opengeospatial.org/standards/kml">OGC KML</a> solía ser un formato
+               de datos vectorial muy popular.
             </p>
-            <h4>Features</h4>
+            <h4>Características</h4>
             <ul>
-                    <li>file-based</li>
+                    <li>basado en archivos</li>
                     <li>XML</li>
-                    <li>Combines geometry along with cartography</li>
-                    <li>Supports just WGS-84 coordinate system</li>
+                    <li>Combina la geometría con la cartografía</li>
+                    <li>Soporta sólo el sistema de coordenadas WGS-84</li>
             </ul>
-            <h4>Description</h4>
+            <h4>Descriptción</h4>
             <p>
-            Some years back, the KML format was very popular, but the geospatial
-            community hit on its limits. Since XML based, it's not suitable for bigger
-            datasets. It combines cartography along with the data geometry in one
-            file, which does not seem to be good solution. And it officially supports
-            only WGS-84 coordinate reference system.
+             Algunos años atrás, el formato KML era muy popular,
+             pero llegó a su límite en la comunidad geoespacial.
+             Debido a que se basa en XML, no es adecuado para conjuntos de datos más grandes.
+             Combina la cartografía con la geometría de los datos en un solo archivo, lo que no parece ser una buena solución.
+             Y oficialmente sólo soporta el sistema de referencia coordenada WGS-84.
             </p>
     </div>
 
@@ -469,39 +465,39 @@
             <h3>GeoJSON</h3>
             <img class="format-logo img-thumbnail" src="images/geojsonicon_400x400.png"/>
             <p class="lead">
-            <a href="http://geojson.org">GeoJSON</a> is community format, based on the
-            popular <a href="http://json.org">JSON</a> data exchange format.
+            <a href="http://geojson.org">GeoJSON</a> es formato comunitario, , basado en el
+            popular formato de intercambio de datos <a href="http://json.org">JSON</a>.
             </p>
-            
-            <h4>Features</h4>
+
+            <h4>Características</h4>
             <ul>
-                    <li>JSON format</li>
-                    <li>File based</li>
-                    <li>Can handle complex data</li>
-                    <li>File size grows fast</li>
+                    <li>Formato JSON</li>
+                    <li>Basado en archivos</li>
+                    <li>Puede manejar datos complejos</li>
+                    <li>El tamaño del archivo crece rápidamente</li>
             </ul>
 
-            <h4>Description</h4>
-            <p>GeoJSON is very simple, human-readable, text-based format. Although it
-            was design to support WGS-84 only, it's possible to use it for other
-            coordinate reference systems too. It can handle complex vector data
-            features and build complex hierarchical data models.
+            <h4>Descripción</h4>
+            <p>GeoJSON es un formato de texto muy simple, legible por humanos.
+            Aunque fue diseñado sólo para soportar WGS-84, también es posible usarlo
+            para otros sistemas de referencia de coordenadas. Puede manejar características
+            de datos vectoriales complejas y construir modelos jerárquicos de datos complejos.
             </p>
             <p>
-            The problem with GeoJSON is that the file grows very fast with the number of
-            coordinate pairs stored. Indexing and other advanced features
-            are not possible either.
+            El problema con GeoJSON es que el archivo crece muy rápido con el número de pares
+            de coordenadas almacenados. La indexación y otras funciones avanzadas tampoco son posibles.
             </p>
     </div>
     <hr>
 
     <p>
-    Last modification: 2017-10-02<br/>
-    Initially created by: <a href="https://github.com/jachym/">Jachym Cepicky</a><br/>
+    Última modificación: 2017-10-02<br/>
+    Creado inicialmente por: <a href="https://github.com/jachym/">Jachym Cepicky</a><br/>
+    Traducio al español por: <a href="https://github.com/samtux/">Samuel Mesa</a>. Gracias a <a href="http://geotux.co/">GeoTux</a><br/>
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
-        <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a><br />
-    Contribute: <a href="https://github.com/opengeolabs/shapefilemustdie">On GitHub</a>
+        <br />Esta obra está licenciada bajo una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a><br />
+    Contribuye: <a href="https://github.com/opengeolabs/shapefilemustdie">On GitHub</a>
     </p>
 
     </div>
